@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel='manifest' href='/manifest.json'>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Scripts -->
-        @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        @inertia
-    </body>
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <!-- Scripts -->
+    @routes
+    <script src="{{ mix('js/app.js') }}" defer></script>
+</head>
+
+<body class="font-sans antialiased">
+    @inertia
+    <script>
+        // This is the "Offline page" service worker
+
+        // Add this below content to your HTML page inside a <script type="module">
+
+    </script> tag, or add the js file to your page at the very top to register service worker
+    // If you get an error about not being able to import, double check that you have type="module" on your
+    <script /> tag
+
+    /*
+    This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service
+    worker,
+    tell the user when there is an update available and let the user know when your PWA is ready to use offline.
+    */
+
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+    </script>
+</body>
+
 </html>
